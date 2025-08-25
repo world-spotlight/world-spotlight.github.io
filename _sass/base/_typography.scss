@@ -28,7 +28,6 @@
 
       & {
         font-size: 1rem + (5 - $i) * $size-factor;
-        color: deepskyblue;
       }
     } @else {
       font-size: 1.05rem;
