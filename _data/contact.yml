@@ -1,15 +1,15 @@
-#  The contact options.
-
+#  The contact options. # 사이드바 하단의 각종 연락 링크를 살리고 싶으면 '# '를 지워서 활성화 할 것.
+# 
 # - type: github
 #   icon: "fab fa-github"
-
+# 
 # - type: twitter
 #   icon: "fa-brands fa-x-twitter"
-
+# 
 # - type: email
 #   icon: "fas fa-envelope"
 #   noblank: true # open link in current tab
-
+# 
 # - type: rss
 #   icon: "fas fa-rss"
 #   noblank: true
