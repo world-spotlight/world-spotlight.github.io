@@ -115,7 +115,7 @@ comments:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: global-events-memorial-archive/global-events-memorial-archive.github.io # <gh-username>/<repo>
+    repo: korea-global-event-trends-center/korea-global-event-trends-center.github.io # <gh-username>/<repo>
     issue_term: pathname # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
