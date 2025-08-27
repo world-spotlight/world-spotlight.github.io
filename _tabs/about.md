@@ -13,3 +13,12 @@ Korea Global Event Trends Center(KGETC)에 오신 것을 환영합니다.
 <span style="background: text linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2); font-weight: bold; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">대한민국</span>을 들썩이게 했던 메가 이벤트들의 발자취를 따라가며 추억하는 공간이 되길 바랍니다.
 
 감사합니다.
+
+KGETC President
+
+## 🧭 안내
+* 창립일 : 2010년 02월 15일
+* 표어 : The world to Korea, Korea to the world.
+
+## 📢 알림
+* 각 국제 행사의 회차는 공식 기록을 따르며, 공식 기록이 없거나 불명확할 경우 임의로 부여됩니다.
