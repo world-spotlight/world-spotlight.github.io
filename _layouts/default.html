@@ -16,6 +16,9 @@ layout: compress
 <html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
 
+  <!-- 각주 CSS 추가 -->
+  <link rel="stylesheet" href="{{ '/assets/css/footnote.css' | relative_url }}">
+
   <body>
     {% include sidebar.html lang=lang %}
 
