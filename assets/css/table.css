@@ -1,14 +1,14 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 14px !important;
     color: #f0f6fc;
 }
 
 th, td {
     border: 1px solid #0B6DB7;
     text-align: center;
-    padding: 5px; !important
+    padding: 5px !important;
 }
 
 th {
