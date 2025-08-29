@@ -12,3 +12,11 @@ td {
     text-align: center;
     font-weight: normal;
 }
+
+th {
+    background: #0B6DB7;
+}
+
+tr:nth-child(even) {
+    background-color: #252526;
+}
