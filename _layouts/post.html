@@ -12,37 +12,28 @@ script_includes:
 <!-- 각주 -->
 {% raw %}
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
-  document.querySelectorAll('.footnote-link').forEach(link => {
-    link.addEventListener('click', () => {
-      // 기존 팝업 제거
-      document.querySelectorAll('.footnote-popup, .footnote-overlay')
-        .forEach(el => el.remove());
-      
-      // 스크롤 방지
-      body.style.overflow = 'hidden';
-      
-      // 오버레이 생성
-      const overlay = document.createElement('div');
-      overlay.className = 'footnote-overlay';
-      document.body.appendChild(overlay);
-
-      // 팝업 생성
-      const popup = document.createElement('div');
-      popup.className = 'footnote-popup';
-      popup.textContent = link.getAttribute('data-note');
-      document.body.appendChild(popup);
-
-      // 닫기 이벤트
-      overlay.addEventListener('click', () => { 
-        popup.remove(); 
-        overlay.remove(); 
-        body.style.overflow = ''; // 스크롤 복구
-      });
+    document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+        document.querySelectorAll('.footnote-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelectorAll('.footnote-popup, .footnote-overlay')
+                    .forEach(el => el.remove());
+                body.style.overflow = 'hidden';
+                const overlay = document.createElement('div');
+                overlay.className = 'footnote-overlay';
+                document.body.appendChild(overlay);
+                const popup = document.createElement('div');
+                popup.className = 'footnote-popup';
+                popup.textContent = link.getAttribute('data-note');
+                document.body.appendChild(popup);
+                overlay.addEventListener('click', () => {
+                    popup.remove();
+                    overlay.remove();
+                    body.style.overflow = '';
+                });
+            });
+        });
     });
-  });
-});
 </script>
 {% endraw %}
 <!-- //각주 -->
