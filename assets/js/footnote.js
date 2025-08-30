@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.footnote-link').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => { // (e)를 추가
+      e.preventDefault(); // 화면 이동을 막는 코드
+
       // 기존 팝업 및 오버레이 제거
       document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
 
-      // 스크롤 방지 클래스 추가
-      document.body.classList.add('no-scroll');
+      // 스크롤 방지
+      document.body.style.overflow = 'hidden';
 
       // 오버레이 생성
       const overlay = document.createElement('div');
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.addEventListener('click', () => {
         popup.remove();
         overlay.remove();
-        document.body.classList.remove('no-scroll'); // 스크롤 방지 클래스 제거
+        document.body.style.overflow = '';
       });
     });
   });
