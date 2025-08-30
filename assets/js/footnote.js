@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let scrollPos = 0;
+  let scrollY = 0;
 
   const lockScroll = () => {
-    scrollPos = window.scrollY || document.documentElement.scrollTop;
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.position = 'relative';
-    document.documentElement.style.top = `-${scrollPos}px`;
+    scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
   };
 
   const unlockScroll = () => {
-    document.documentElement.style.overflow = '';
-    document.documentElement.style.position = '';
-    document.documentElement.style.top = '';
-    window.scrollTo(0, scrollPos);
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
   };
 
   const closePopup = () => {
@@ -21,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.removeEventListener('keydown', escHandler);
   };
 
-  const escHandler = e => { if(e.key==='Escape') closePopup(); };
+  const escHandler = e => { if (e.key === 'Escape') closePopup(); };
 
   const openPopup = text => {
     closePopup();
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.createElement('div');
     overlay.className = 'footnote-overlay';
     overlay.onclick = closePopup;
-    overlay.addEventListener('touchmove', e => e.preventDefault(), {passive:false});
+    overlay.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 
     const popup = document.createElement('div');
     popup.className = 'footnote-popup';
