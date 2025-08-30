@@ -30,7 +30,7 @@ script_includes:
         overlay.addEventListener('click', () => {
           popup.remove();
           overlay.remove();
-          document.html.classList.remove('no-scroll');
+          document.documentElement.classList.add('no-scroll');
         });
       });
     });
