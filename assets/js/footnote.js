@@ -1,4 +1,3 @@
-<script>
 document.addEventListener('DOMContentLoaded', () => {
   let scrollDisabled = false;
 
@@ -50,4 +49,3 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   );
 });
-</script>
