@@ -12,26 +12,29 @@ script_includes:
 <!-- 각주 -->
 {% raw %}
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.footnote-link').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
-      const overlay = document.createElement('div');
-      overlay.className = 'footnote-overlay';
-      document.body.appendChild(overlay);
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.footnote-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
+        const overlay = document.createElement('div');
+        overlay.className = 'footnote-overlay';
+        document.body.appendChild(overlay);
 
-      const popup = document.createElement('div');
-      popup.className = 'footnote-popup';
-      popup.textContent = link.getAttribute('data-note');
-      document.body.appendChild(popup);
+        const popup = document.createElement('div');
+        popup.className = 'footnote-popup';
+        popup.textContent = link.getAttribute('data-note');
+        document.body.appendChild(popup);
 
-      overlay.addEventListener('click', () => {
-        popup.remove();
-        overlay.remove();
+        document.body.classList.add('no-scroll');
+
+        overlay.addEventListener('click', () => {
+          popup.remove();
+          overlay.remove();
+          document.body.classList.remove('no-scroll');
+        });
       });
     });
   });
-});
 </script>
 {% endraw %}
 <!-- //각주 -->
