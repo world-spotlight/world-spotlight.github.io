@@ -25,12 +25,12 @@ script_includes:
         popup.textContent = link.getAttribute('data-note');
         document.body.appendChild(popup);
 
-        document.documentElement.classList.add('no-scroll');
+        document.html.classList.add('no-scroll');
 
         overlay.addEventListener('click', () => {
           popup.remove();
           overlay.remove();
-          document.body.classList.remove('no-scroll');
+          document.html.classList.remove('no-scroll');
         });
       });
     });
