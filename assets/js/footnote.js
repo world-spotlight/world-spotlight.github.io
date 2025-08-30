@@ -1,46 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let scrollDisabled = false;
+  let popupOpen = false;
 
-  const disableScroll = () => {
-    if (scrollDisabled) return;
-    scrollDisabled = true;
-    document.body.style.overflow = 'hidden';
-    document.body.style.touchAction = 'none';
-    document.body.style.overscrollBehavior = 'none';
-  };
-
-  const enableScroll = () => {
-    scrollDisabled = false;
-    document.body.style.overflow = '';
-    document.body.style.touchAction = '';
-    document.body.style.overscrollBehavior = '';
-  };
-
-  const closePopup = () => {
-    document.querySelectorAll('.footnote-popup,.footnote-overlay').forEach(el => el.remove());
-    enableScroll();
-    document.removeEventListener('keydown', escHandler);
-  };
-
-  const escHandler = e => { if(e.key==='Escape') closePopup(); };
+  const disableScroll = e => e.preventDefault();
 
   const openPopup = text => {
-    closePopup();
-    disableScroll();
+    if (popupOpen) return;
+    popupOpen = true;
 
+    // 팝업/오버레이 생성
     const overlay = document.createElement('div');
     overlay.className = 'footnote-overlay';
-    overlay.onclick = closePopup;
-    overlay.addEventListener('touchmove', e => e.preventDefault(), {passive:false});
+    overlay.addEventListener('click', closePopup);
+    overlay.addEventListener('touchmove', disableScroll, { passive: false });
 
     const popup = document.createElement('div');
     popup.className = 'footnote-popup';
     popup.textContent = text;
-    popup.onclick = e=>e.stopPropagation();
+    popup.addEventListener('click', e => e.stopPropagation());
 
     document.body.append(overlay, popup);
+
+    // 스크롤 이벤트 차단
+    document.body.addEventListener('wheel', disableScroll, { passive: false });
     document.addEventListener('keydown', escHandler);
   };
+
+  const closePopup = () => {
+    document.querySelectorAll('.footnote-popup,.footnote-overlay').forEach(el => el.remove());
+    document.body.removeEventListener('wheel', disableScroll, { passive: false });
+    document.removeEventListener('keydown', escHandler);
+    popupOpen = false;
+  };
+
+  const escHandler = e => { if(e.key==='Escape') closePopup(); };
 
   document.querySelectorAll('.footnote-link').forEach(link =>
     link.addEventListener('click', e => {
