@@ -1,45 +1,43 @@
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-  let scrollY = 0;
+  let scrollDisabled = false;
 
-  const lockScroll = () => {
-    scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
+  const disableScroll = () => {
+    if (scrollDisabled) return;
+    scrollDisabled = true;
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+    document.body.style.overscrollBehavior = 'none';
   };
 
-  const unlockScroll = () => {
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
-    window.scrollTo(0, scrollY);
+  const enableScroll = () => {
+    scrollDisabled = false;
+    document.body.style.overflow = '';
+    document.body.style.touchAction = '';
+    document.body.style.overscrollBehavior = '';
   };
 
   const closePopup = () => {
     document.querySelectorAll('.footnote-popup,.footnote-overlay').forEach(el => el.remove());
-    unlockScroll();
+    enableScroll();
     document.removeEventListener('keydown', escHandler);
   };
 
-  const escHandler = e => { if (e.key === 'Escape') closePopup(); };
+  const escHandler = e => { if(e.key==='Escape') closePopup(); };
 
   const openPopup = text => {
     closePopup();
-    lockScroll();
+    disableScroll();
 
     const overlay = document.createElement('div');
     overlay.className = 'footnote-overlay';
     overlay.onclick = closePopup;
-    overlay.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+    overlay.addEventListener('touchmove', e => e.preventDefault(), {passive:false});
 
     const popup = document.createElement('div');
     popup.className = 'footnote-popup';
     popup.textContent = text;
-    popup.onclick = e => e.stopPropagation();
+    popup.onclick = e=>e.stopPropagation();
 
     document.body.append(overlay, popup);
     document.addEventListener('keydown', escHandler);
@@ -52,3 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   );
 });
+</script>
