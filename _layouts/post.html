@@ -13,33 +13,45 @@ script_includes:
 {% raw %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.footnote-link').forEach(link => {
-        link.addEventListener('click', () => {
-            // 기존 팝업 및 오버레이 제거
-            document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('.footnote-link');
+        if (!link) return;
 
-            // html 스크롤 막기
-            document.documentElement.style.overflow = 'hidden';
+        // 기존 팝업 제거
+        document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
 
-            // 오버레이 생성
-            const overlay = document.createElement('div');
-            overlay.className = 'footnote-overlay';
-            document.body.appendChild(overlay);
+        // 스크롤 잠금
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollTop}px`;
+        document.body.dataset.scrollTop = scrollTop;
 
-            // 팝업 생성
-            const popup = document.createElement('div');
-            popup.className = 'footnote-popup';
-            popup.textContent = link.getAttribute('data-note');
-            document.body.appendChild(popup);
+        // 오버레이 생성
+        const overlay = document.createElement('div');
+        overlay.className = 'footnote-overlay';
+        document.body.appendChild(overlay);
 
-            // 오버레이 클릭 시 팝업 닫기
-            overlay.addEventListener('click', () => {
-                popup.remove();
-                overlay.remove();
-                // html 스크롤 다시 허용
-                document.documentElement.style.overflow = '';
-            });
-        });
+        // 팝업 생성
+        const popup = document.createElement('div');
+        popup.className = 'footnote-popup';
+        popup.textContent = link.getAttribute('data-note');
+        document.body.appendChild(popup);
+
+        // 닫기 함수
+        const closePopup = () => {
+            popup.remove();
+            overlay.remove();
+            const savedScroll = document.body.dataset.scrollTop;
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo(0, savedScroll);
+        };
+
+        overlay.addEventListener('click', closePopup);
     });
 });
 </script>
