@@ -11,46 +11,33 @@ script_includes:
 ---
 <!-- 각주 -->
 {% raw %}
-<script>
-  function initFootnotes() {
-    document.querySelectorAll('.post .footnote-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        // 기존 팝업 제거
-        document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
-        document.body.classList.remove('footnote-open');
-
-        // 오버레이 생성
-        const overlay = document.createElement('div');
-        overlay.className = 'footnote-overlay';
-        document.body.appendChild(overlay);
-
-        // 팝업 생성
-        const popup = document.createElement('div');
-        popup.className = 'footnote-popup';
-        popup.textContent = link.getAttribute('data-note');
-        document.body.appendChild(popup);
-
-        // 스크롤 방지
-        document.body.classList.add('footnote-open');
-
-        // 오버레이 클릭 시 닫기
-        overlay.addEventListener('click', () => {
-          popup.remove();
-          overlay.remove();
-          document.body.classList.remove('footnote-open');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          document.querySelectorAll('.footnote-link').forEach(link => {
+            link.addEventListener('click', () => {
+              // 기존 팝업 및 오버레이 제거
+              document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
+        
+              // 오버레이 생성
+              const overlay = document.createElement('div');
+              overlay.className = 'footnote-overlay';
+              document.body.appendChild(overlay);
+        
+              // 팝업 생성
+              const popup = document.createElement('div');
+              popup.className = 'footnote-popup';
+              popup.textContent = link.getAttribute('data-note');
+              document.body.appendChild(popup);
+        
+              // 오버레이 클릭 시 팝업 닫기
+              overlay.addEventListener('click', () => {
+                popup.remove();
+                overlay.remove();
+              });
+            });
+          });
         });
-      });
-    });
-  }
-
-  // 일반 DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', initFootnotes);
-
-  // PJAX/Turbolinks 등 페이지 전환에도 대응
-  document.addEventListener('turbolinks:load', initFootnotes);
-</script>
+    </script>
 {% endraw %}
 <!-- //각주 -->
 
