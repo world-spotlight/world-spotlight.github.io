@@ -12,46 +12,41 @@ script_includes:
 <!-- 각주 -->
 {% raw %}
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('.footnote-link');
-        if (!link) return;
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('.footnote-link');
+  if (!link) return;
 
-        // 기존 팝업 제거
-        document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
+  // 기존 팝업 제거
+  document.querySelectorAll('.footnote-popup, .footnote-overlay').forEach(el => el.remove());
 
-        // 스크롤 잠금
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollTop}px`;
-        document.body.dataset.scrollTop = scrollTop;
+  // 스크롤 잠금
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollTop}px`;
+  document.body.dataset.scrollTop = scrollTop;
 
-        // 오버레이/팝업 생성
-        const overlay = document.createElement('div');
-        overlay.className = 'footnote-overlay';
-        document.body.appendChild(overlay);
+  // 오버레이 생성
+  const overlay = document.createElement('div');
+  overlay.className = 'footnote-overlay';
+  document.body.appendChild(overlay);
 
-        const popup = document.createElement('div');
-        popup.className = 'footnote-popup';
-        popup.textContent = link.getAttribute('data-note');
-        document.body.appendChild(popup);
+  // 팝업 생성
+  const popup = document.createElement('div');
+  popup.className = 'footnote-popup';
+  popup.textContent = link.getAttribute('data-note') || '';
+  document.body.appendChild(popup);
 
-        // 닫기 함수
-        const closePopup = () => {
-            popup.remove();
-            overlay.remove();
-            const savedScroll = document.body.dataset.scrollTop;
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            window.scrollTo(0, savedScroll);
-        };
+  // 닫기 함수
+  const closePopup = () => {
+    popup.remove();
+    overlay.remove();
+    const savedScroll = parseInt(document.body.dataset.scrollTop || '0');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, savedScroll);
+  };
 
-        overlay.addEventListener('click', closePopup);
-    });
+  overlay.addEventListener('click', closePopup);
 });
 </script>
 {% endraw %}
