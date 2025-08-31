@@ -12,18 +12,19 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 9998;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .footnote-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #1b1b1e;
     color: #f0f6fc;
     padding: 14px 18px;
     border-radius: 10px;
     max-width: 90%;
-    max-height: 90%;
+    width: 400px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 9999;
 }
