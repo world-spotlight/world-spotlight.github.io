@@ -7,18 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (popupOpen) return;
     popupOpen = true;
 
-    // 팝업/오버레이 생성
+    // 오버레이 생성 (Flex로 중앙 정렬)
     const overlay = document.createElement('div');
     overlay.className = 'footnote-overlay';
     overlay.addEventListener('click', closePopup);
     overlay.addEventListener('touchmove', disableScroll, { passive: false });
 
+    // 팝업 생성
     const popup = document.createElement('div');
     popup.className = 'footnote-popup';
     popup.textContent = text;
     popup.addEventListener('click', e => e.stopPropagation());
 
-    document.body.append(overlay, popup);
+    // 오버레이 안에 팝업 넣기
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
 
     // 스크롤 이벤트 차단
     document.body.addEventListener('wheel', disableScroll, { passive: false });
@@ -32,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     popupOpen = false;
   };
 
-  const escHandler = e => { if(e.key==='Escape') closePopup(); };
+  const escHandler = e => { if (e.key === 'Escape') closePopup(); };
 
   document.querySelectorAll('.footnote-link').forEach(link =>
     link.addEventListener('click', e => {
