@@ -1,0 +1,12 @@
+.korea-host {
+    background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.foreign-host {
+    font-weight: bold;
+}
