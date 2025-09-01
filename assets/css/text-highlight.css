@@ -16,13 +16,12 @@
     font-weight: bold;
     text-decoration: none;
     position: relative;
-    display: inline-block;
 }
 
 .korea-host2::after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 1px;
@@ -42,7 +41,7 @@
 .foreign-host2::after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 1px;
