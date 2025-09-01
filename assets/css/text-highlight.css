@@ -22,10 +22,10 @@
 .korea-host2::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 2px;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
 }
 
@@ -42,9 +42,9 @@
 .foreign-host2::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 2px;
     left: 0;
     width: 100%;
-    height: 2px;
-    background: inherit; /* Changed from gradient to a solid blue color */
+    height: 1px;
+    background: #f0f6fc;
 }
