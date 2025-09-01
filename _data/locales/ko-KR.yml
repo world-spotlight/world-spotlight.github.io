@@ -80,5 +80,5 @@ df:
 
 # categories page
 categories:
-  category_measure:
-  post_measure:
+  category_measure: ""
+  post_measure: ""
