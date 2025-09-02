@@ -1,0 +1,11 @@
+body {
+  cursor: url('/assets/images/Blue Triangle Gemstone cursor.png') 0 0, auto;
+}
+
+a:hover {
+  cursor: url('/assets/images/Purple Gloving Gems cursor.png') 0 0, auto;
+}
+
+input, textarea {
+  cursor: url('/assets/images/Red Gloving Gems pointer.png') 0 0, auto;
+}
