@@ -1,11 +1,11 @@
 body {
-  cursor: url('/assets/img/Blue-Triangle-Gemstone-cursor.png') 0 0, auto;
+  cursor: url('/assets/img/Blue-Triangle-Gemstone-cursor-32.png') 0 0, pointer;
 }
 
 a:hover {
-  cursor: url('/assets/img/Purple-Gloving-Gems-cursor.png') 0 0, auto;
+  cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, cursor;
 }
 
 input, textarea {
-  cursor: url('/assets/img/Red-Gloving-Gems-pointer.png') 0 0, auto;
+  cursor: url('/assets/img/Red-Gloving-Gems-pointer-32.png') 0 0, text;
 }
