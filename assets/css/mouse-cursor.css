@@ -2,7 +2,7 @@ body {
     cursor: url('/assets/img/Blue-Triangle-Gemstone-cursor-32.png') 0 0, default;
 }
 
-a:hover {
+a, a:hover {
     cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, pointer;
 }
 
