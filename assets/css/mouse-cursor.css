@@ -5,25 +5,24 @@ body {
 
 /* 링크 커서 */
 a, a:hover {
-    cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, pointer;
-}
-
-/* 입력창 커서 */
-input,
-textarea {
-    cursor: url('/assets/img/Red-Gloving-Gems-pointer-32.png') 0 0, text;
+    cursor: url('/assets/img/Red-Gloving-Gems-pointer-32.png') 0 0, pointer;
 }
 
 /* 버튼 커서 */
 button, button:hover {
-    cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, pointer !important;
+    cursor: url('/assets/img/Red-Gloving-Gems-pointer-32.png') 0 0, pointer !important;
+}
+
+/* 입력창 커서 */
+input, textarea {
+    cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, text;
 }
 
 /* 깜빡임 방지: 커서 이미지 미리 로드 */
 body::before {
     content: url('/assets/img/Blue-Triangle-Gemstone-cursor-32.png')
-             url('/assets/img/Purple-Gloving-Gems-cursor-32.png')
-             url('/assets/img/Red-Gloving-Gems-pointer-32.png');
+             url('/assets/img/Red-Gloving-Gems-pointer-32.png')
+             url('/assets/img/Purple-Gloving-Gems-cursor-32.png');
     display: block;
     width: 0;
     height: 0;
