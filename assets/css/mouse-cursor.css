@@ -13,6 +13,11 @@ button, button:hover {
     cursor: url('/assets/img/Red-Gloving-Gems-pointer-32.png') 0 0, pointer !important;
 }
 
+/* span 커서 */
+span.footnote-link {
+    cursor: url('/assets/img/Red-Gloving-Gems-pointer-32.png') 0 0, pointer;
+}
+
 /* 입력창 커서 */
 input, textarea {
     cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, text;
