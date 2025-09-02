@@ -12,5 +12,5 @@ textarea {
 }
 
 button, button:hover {
-  cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, pointer;
+  cursor: url('/assets/img/Purple-Gloving-Gems-cursor-32.png') 0 0, pointer !important;
 }
