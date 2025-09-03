@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ⭐ 별 생성 함수
   function createPetals(x, y) {
-    const count = Math.floor(getRandom(5, 13));
+    const count = Math.floor(getRandom(1, 10));
     const containerRect = container.getBoundingClientRect();
 
     for (let i = 0; i < count; i++) {
