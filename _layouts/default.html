@@ -93,5 +93,38 @@ layout: compress
     {% endfor %}
 
     {% include_cached search-loader.html lang=lang %}
+    
+    <!-- jQuery + PJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        // PJAX 적용 (내부 링크만 SPA처럼 열기)
+        $(document).pjax(
+          'a:not([target="_blank"]):not([href^=http])',
+          '#main-wrapper',
+          {
+            fragment: '#main-wrapper',
+            timeout: 8000
+          }
+        );
+
+        // 전환할 때 살짝 흐려졌다가 복귀하는 효과
+        $(document).on('pjax:send', function() {
+          $('body').addClass('pjax-loading');
+        }).on('pjax:complete', function() {
+          $('body').removeClass('pjax-loading');
+        });
+
+        // 페이지 바뀐 후 다시 실행해야 하는 기능들
+        $(document).on('pjax:end', function() {
+          if (typeof Prism !== 'undefined') Prism.highlightAll();   // 코드 색칠
+          if (typeof MathJax !== 'undefined') MathJax.typeset();   // 수학식
+          if (typeof initFootnotes === 'function') initFootnotes(); // 각주
+        });
+      });
+    </script>
+    <!-- //jQuery + PJAX -->
   </body>
 </html>
