@@ -2,9 +2,9 @@
 body {
   user-select: none;
   -webkit-user-drag: none;
+  overflow: hidden; /* 혹시 남는 스크롤 제거 */
 }
 
-/* 별 요소 */
 .petal {
   position: absolute;
   pointer-events: none;
