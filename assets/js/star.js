@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ⭐ 분홍색 팔레트
   const softPinks = [
-    "#ffe4ec", "#ffe0ea", "#ffdce8", "#ffd8e6", "#ffd4e4",
-    "#ffcfdf", "#ffcadb", "#ffc6d7", "#ffc1d3", "#ffbcd0",
-    "#ffb7cc", "#ffb2c8", "#ffadc4", "#ffa8c0", "#ffa3bc",
-    "#ff9eb8", "#ff99b4", "#ff94b0", "#ff8fa9", "#ff8aa5"
+    "#ffe4ec","#ffe0ea","#ffdce8","#ffd8e6","#ffd4e4",
+    "#ffcfdf","#ffcadb","#ffc6d7","#ffc1d3","#ffbcd0",
+    "#ffb7cc","#ffb2c8","#ffadc4","#ffa8c0","#ffa3bc",
+    "#ff9eb8","#ff99b4","#ff94b0","#ff8fa9","#ff8aa5"
   ];
   const getRandom = (min, max) => Math.random() * (max - min) + min;
   const getRandomPink = () => softPinks[Math.floor(Math.random() * softPinks.length)];
 
-  // ⭐ container + defs 동적 생성
+  // ⭐ container + defs 생성
   let container = document.getElementById('star-container');
   if (!container) {
     container = document.createElement('div');
@@ -51,12 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     svgDefs.innerHTML = '<defs id="gradients"></defs>';
     container.appendChild(svgDefs);
   }
-
   const defs = document.getElementById("gradients");
 
-  // ⭐ 별 생성 함수
+  // ⭐ 별 생성 함수 (항상 10개)
   function createPetals(x, y) {
-    const count = Math.floor(getRandom(1, 10));
+    const count = 10; // 10개 고정
     const containerRect = container.getBoundingClientRect();
 
     for (let i = 0; i < count; i++) {
@@ -67,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
       petal.style.height = `${size}px`;
       petal.style.opacity = getRandom(0.6, 1);
 
-      // container 안 위치 보정
       const petalLeft = Math.min(Math.max(x - containerRect.left - size / 2, 0), containerRect.width - size);
       const petalTop = Math.min(Math.max(y - containerRect.top - size / 2, 0), containerRect.height - size);
       petal.style.left = `${petalLeft}px`;
@@ -80,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       petal.style.setProperty('--dy', dy);
       petal.style.setProperty('--rotate', rotate);
 
-      // 랜덤 분홍 그라데이션
       const gradId = "grad-" + Date.now() + "-" + Math.floor(Math.random() * 10000);
       let color1 = getRandomPink();
       let color2 = getRandomPink();
@@ -94,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       defs.insertAdjacentHTML("beforeend", gradient);
 
-      // 별 SVG
       petal.innerHTML = `
         <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
           <polygon fill="url(#${gradId})"
@@ -105,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       container.appendChild(petal);
 
-      // 애니메이션 끝나면 제거 + gradient 제거
       petal.addEventListener('animationend', () => {
         petal.remove();
         const gradEl = document.getElementById(gradId);
@@ -114,10 +109,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 클릭/터치 이벤트
-  document.addEventListener('click', e => createPetals(e.clientX, e.clientY));
+  // ⭐ 터치/클릭 이벤트 처리
   document.addEventListener('touchstart', e => {
     const touch = e.touches[0];
     createPetals(touch.clientX, touch.clientY);
+    e.preventDefault(); // 클릭 중복 방지
+  });
+  document.addEventListener('click', e => {
+    createPetals(e.clientX, e.clientY);
   });
 });
