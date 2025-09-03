@@ -1,0 +1,32 @@
+/* 별 애니메이션 CSS */
+body {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 별 요소 */
+.petal {
+  position: absolute;
+  pointer-events: none;
+  opacity: 1;
+  animation: fly 1.5s forwards;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.petal * {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.petal svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fly {
+  to {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rotate));
+    opacity: 0;
+  }
+}
