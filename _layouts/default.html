@@ -5,36 +5,45 @@ layout: compress
 <!doctype html>
 
 {% include origin-type.html %}
-
 {% include lang.html %}
 
 {% if site.theme_mode %}
   {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
 {% endif %}
 
-<!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
 
-  <!-- 각주 CSS 추가 -->
+  <!-- 각주 CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/footnote.css' | relative_url }}">
-  <!-- 각주 js 추가 -->
+  <!-- 각주 JS -->
   <script src="{{ '/assets/js/footnote.js' | relative_url }}"></script>
-  <!-- 표 CSS 추가 -->
+  <!-- 표 CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/table.css' | relative_url }}">
-  <!-- 텍스트 강조 CSS 추가 -->
+  <!-- 텍스트 강조 CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/text-highlight.css' | relative_url }}">
-  <!-- 마우스 커서 CSS 추가 -->
-  <link rel="stylesheet" href="{{ '/assets/css/mouse-cursor.css' | relative_url }}">
-  
+  <!-- 마우스 커서 CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/mouse-cursor.css' | relative_url }}" data-turbo-permanent>
+
+  <!-- Turbo.js (Hotwire) -->
+  <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"></script>
+
   <body>
-    {% include sidebar.html lang=lang %}
+    <!-- 사이드바 (항상 유지) -->
+    <div data-turbo-permanent>
+      {% include sidebar.html lang=lang %}
+    </div>
 
     <div id="main-wrapper" class="d-flex justify-content-center">
       <div class="container d-flex flex-column px-xxl-5">
-        {% include topbar.html lang=lang %}
+
+        <!-- 상단바 (항상 유지) -->
+        <div data-turbo-permanent>
+          {% include topbar.html lang=lang %}
+        </div>
 
         <div class="row flex-grow-1">
+          <!-- 메인 컨텐츠 (Turbo가 교체) -->
           <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
             {% if layout.refactor or layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
@@ -43,8 +52,8 @@ layout: compress
             {% endif %}
           </main>
 
-          <!-- panel -->
-          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+          <!-- 패널 (원하는 경우 유지) -->
+          <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted" data-turbo-permanent>
             <div class="access">
               {% include_cached update-list.html lang=lang %}
               {% include_cached trending-tags.html lang=lang %}
@@ -65,14 +74,18 @@ layout: compress
               {% include {{ _include_path }} lang=lang %}
             {% endfor %}
 
-            {% include_cached footer.html lang=lang %}
+            <!-- 푸터 (항상 유지) -->
+            <div data-turbo-permanent>
+              {% include_cached footer.html lang=lang %}
+            </div>
           </div>
         </div>
 
         {% include_cached search-results.html lang=lang %}
       </div>
 
-      <aside aria-label="Scroll to Top">
+      <!-- Back to top 버튼 (유지) -->
+      <aside aria-label="Scroll to Top" data-turbo-permanent>
         <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
           <i class="fas fa-angle-up"></i>
         </button>
@@ -86,7 +99,6 @@ layout: compress
     {% endif %}
 
     <!-- Embedded scripts -->
-
     {% for _include in layout.script_includes %}
       {% assign _include_path = _include | append: '.html' %}
       {% include {{ _include_path }} %}
