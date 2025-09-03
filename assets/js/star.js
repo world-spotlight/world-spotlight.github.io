@@ -3,9 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.random() * (max - min) + min;
   }
 
-  const pinkShades = [
-  "#ffc0cb", "#ffb6c1", "#ff69b4", "#ff1493",
-  "#db7093", "#ff82ab", "#f78fa7", "#ffa6c9"
+  // 🎨 부드럽게 톤이 맞는 분홍색 계열 20가지
+  const softPinks = [
+    "#ffe4ec", "#ffe0ea", "#ffdce8", "#ffd8e6", "#ffd4e4",
+    "#ffcfdf", "#ffcadb", "#ffc6d7", "#ffc1d3", "#ffbcd0",
+    "#ffb7cc", "#ffb2c8", "#ffadc4", "#ffa8c0", "#ffa3bc",
+    "#ff9eb8", "#ff99b4", "#ff94b0", "#ff8fa9", "#ff8aa5"
   ];
 
   function getRandomPink() {
@@ -35,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
       petal.style.height = `${size}px`;
       petal.style.opacity = getRandom(0.6, 1);
 
-      // ⭐ 화면 안쪽 위치로 보정
+      // 화면 안쪽 위치 보정
       const petalLeft = Math.min(Math.max(x - size / 2, 0), window.innerWidth - size);
       const petalTop = Math.min(Math.max(y - size / 2, 0), window.innerHeight - size);
       petal.style.left = `${petalLeft}px`;
       petal.style.top = `${petalTop}px`;
 
-      // ⭐ 이동 범위도 화면 안쪽으로 제한
+      // 이동 범위 제한
       const dx = getRandom(
         -Math.min(80, petalLeft),
         Math.min(80, window.innerWidth - petalLeft - size)
@@ -57,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       petal.style.setProperty('--dy', dy);
       petal.style.setProperty('--rotate', rotate);
 
-      // ⭐ 랜덤 부드러운 분홍색 그라데이션
+      // 랜덤 분홍 그라데이션
       const gradId = "grad-" + Date.now() + "-" + Math.floor(Math.random() * 10000);
       const color1 = getRandomPink();
       let color2 = getRandomPink();
@@ -71,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       defs.insertAdjacentHTML("beforeend", gradient);
 
-      // ⭐ 별 SVG
+      // 별 SVG
       petal.innerHTML = `
         <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
           <polygon fill="url(#${gradId})"
@@ -83,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.body.appendChild(petal);
 
-      // 애니메이션 종료 후 제거 + 그라데이션 제거
+      // 애니메이션 끝나면 제거 + 그라데이션 제거
       petal.addEventListener('animationend', () => {
         petal.remove();
         const gradEl = document.getElementById(gradId);
