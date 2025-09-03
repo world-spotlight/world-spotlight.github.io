@@ -1,60 +1,80 @@
 document.addEventListener("DOMContentLoaded", () => {
-  function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
-  }
+  // ⭐ CSS 동적 삽입
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .petal {
+      position: absolute;
+      pointer-events: none;
+      opacity: 1;
+      animation: fly 1.5s forwards;
+    }
+    .petal svg {
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes fly {
+      to {
+        transform: translate(var(--dx), var(--dy)) rotate(var(--rotate));
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 
-  // 🎨 부드럽게 톤이 맞는 분홍색 계열 20가지
+  // ⭐ 분홍색 팔레트
   const softPinks = [
     "#ffe4ec", "#ffe0ea", "#ffdce8", "#ffd8e6", "#ffd4e4",
     "#ffcfdf", "#ffcadb", "#ffc6d7", "#ffc1d3", "#ffbcd0",
     "#ffb7cc", "#ffb2c8", "#ffadc4", "#ffa8c0", "#ffa3bc",
     "#ff9eb8", "#ff99b4", "#ff94b0", "#ff8fa9", "#ff8aa5"
   ];
+  const getRandom = (min, max) => Math.random() * (max - min) + min;
+  const getRandomPink = () => softPinks[Math.floor(Math.random() * softPinks.length)];
 
-  function getRandomPink() {
-    return softPinks[Math.floor(Math.random() * softPinks.length)];
+  // ⭐ container + defs 동적 생성
+  let container = document.getElementById('star-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'star-container';
+    container.style.position = 'fixed';
+    container.style.top = 0;
+    container.style.left = 0;
+    container.style.width = '100%';
+    container.style.height = '100%';
+    container.style.overflow = 'hidden';
+    container.style.pointerEvents = 'none';
+    document.body.appendChild(container);
+
+    const svgDefs = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgDefs.setAttribute("width", 0);
+    svgDefs.setAttribute("height", 0);
+    svgDefs.innerHTML = '<defs id="gradients"></defs>';
+    container.appendChild(svgDefs);
   }
 
+  const defs = document.getElementById("gradients");
+
+  // ⭐ 별 생성 함수
   function createPetals(x, y) {
     const count = Math.floor(getRandom(5, 13));
-
-    // defs 생성 (한 번만)
-    let defs = document.getElementById("gradients");
-    if (!defs) {
-      const svgDefs = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svgDefs.setAttribute("width", 0);
-      svgDefs.setAttribute("height", 0);
-      svgDefs.innerHTML = '<defs id="gradients"></defs>';
-      document.body.appendChild(svgDefs);
-      defs = document.getElementById("gradients");
-    }
+    const containerRect = container.getBoundingClientRect();
 
     for (let i = 0; i < count; i++) {
       const petal = document.createElement('div');
       petal.className = 'petal';
-
       const size = getRandom(15, 35);
       petal.style.width = `${size}px`;
       petal.style.height = `${size}px`;
       petal.style.opacity = getRandom(0.6, 1);
 
-      // 화면 안쪽 위치 보정
-      const petalLeft = Math.min(Math.max(x - size / 2, 0), window.innerWidth - size);
-      const petalTop = Math.min(Math.max(y - size / 2, 0), window.innerHeight - size);
+      // container 안 위치 보정
+      const petalLeft = Math.min(Math.max(x - containerRect.left - size / 2, 0), containerRect.width - size);
+      const petalTop = Math.min(Math.max(y - containerRect.top - size / 2, 0), containerRect.height - size);
       petal.style.left = `${petalLeft}px`;
       petal.style.top = `${petalTop}px`;
 
-      // 이동 범위 제한
-      const dx = getRandom(
-        -Math.min(80, petalLeft),
-        Math.min(80, window.innerWidth - petalLeft - size)
-      ) + 'px';
-
-      const dy = getRandom(
-        -Math.min(100, petalTop),
-        Math.min(100, window.innerHeight - petalTop - size)
-      ) + 'px';
-
+      const dx = getRandom(-Math.min(80, petalLeft), Math.min(80, containerRect.width - petalLeft - size)) + 'px';
+      const dy = getRandom(-Math.min(100, petalTop), Math.min(100, containerRect.height - petalTop - size)) + 'px';
       const rotate = getRandom(-720, 720) + 'deg';
       petal.style.setProperty('--dx', dx);
       petal.style.setProperty('--dy', dy);
@@ -62,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 랜덤 분홍 그라데이션
       const gradId = "grad-" + Date.now() + "-" + Math.floor(Math.random() * 10000);
-      const color1 = getRandomPink();
+      let color1 = getRandomPink();
       let color2 = getRandomPink();
       while(color1 === color2) color2 = getRandomPink();
 
@@ -83,10 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
                            2,39 39,39"/>
         </svg>
       `;
+      container.appendChild(petal);
 
-      document.body.appendChild(petal);
-
-      // 애니메이션 끝나면 제거 + 그라데이션 제거
+      // 애니메이션 끝나면 제거 + gradient 제거
       petal.addEventListener('animationend', () => {
         petal.remove();
         const gradEl = document.getElementById(gradId);
