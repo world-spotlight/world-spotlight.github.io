@@ -9,6 +9,15 @@
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
 
+  <!-- SPA 방식 -->
+  <!-- Turbo: 페이지 전환 빠르게 -->
+  <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.min.js" defer></script>
+  
+  <!-- React + ReactDOM CDN (버튼용) -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- //SPA 방식 -->
+
   {%- capture seo_tags -%}
     {% seo title=false %}
   {%- endcapture -%}
