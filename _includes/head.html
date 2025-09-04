@@ -8,6 +8,45 @@
     name="viewport"
     content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
+
+  <!-- InstantClick SPA 적용 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.1.0/instantclick.min.js" data-no-instant></script>
+  <script>
+  // 블로그 JS 재실행 함수
+  function initBlogScripts() {
+    // 예시: 터치 애니메이션, 별, 벚꽃 등
+    if (typeof initTouchEffects === 'function') initTouchEffects();
+    
+    // 예시: Prism.js 구문 하이라이트
+    if (window.Prism) Prism.highlightAll();
+    
+    // 필요하면 여기 추가
+  }
+
+  // InstantClick 초기화
+  InstantClick.init();
+
+  // 페이지 전환 후 실행
+  InstantClick.on('change', function() {
+    // 수식 다시 렌더링
+    if (window.MathJax) {
+      MathJax.typesetPromise();
+    }
+
+    // 이미지 lazyload 재적용
+    if (window.lazyLoadInstance) {
+      window.lazyLoadInstance.update();
+    }
+
+    // 블로그 JS 재등록
+    initBlogScripts();
+
+    console.log('페이지 전환 완료! 현재 URL:', window.location.href);
+  });
+
+  // 초기 페이지 로드 시 실행
+  initBlogScripts();
+  </script>
   
   {%- capture seo_tags -%}
     {% seo title=false %}
