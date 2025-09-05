@@ -1,3 +1,4 @@
+/* 공통 */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -12,10 +13,11 @@ td {
     font-size: 14px !important;
 }
 
-tr.header-row {
+.header-row {
     background: #0B6DB7 !important;
 }
 
+/* 개최지 */
 .col-no {
     width: 15%;
 }
@@ -26,4 +28,29 @@ tr.header-row {
 
 .col-host {
     width: 70%;
+}
+
+/* 투표 결과 표 */
+.col-Candidate-70 {
+    width: 70%;
+}
+
+.col-Candidate-60 {
+    width: 60%;
+}
+
+.col-Candidate-50 {
+    width: 50%;
+}
+
+.col-Round-10 {
+    width: 10%;
+}
+
+.col-Round-20 {
+    width: 20%;
+}
+
+.col-Round-30 {
+    width: 30%;
 }
