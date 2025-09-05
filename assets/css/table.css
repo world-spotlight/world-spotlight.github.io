@@ -13,7 +13,7 @@ td {
 }
 
 tr.header-row {
-    background: #0B6DB7;
+    background: #0B6DB7 !important;
 }
 
 .col-no {
