@@ -1,12 +1,29 @@
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        color: #f0f6fc;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f6fc;
+}
 
-    th, td {
-        border: 1px solid #0B6DB7;
-        padding: 5px !important;
-        text-align: center;
-        font-size: 14px !important;
-    }
+th,
+td {
+    border: 1px solid #0B6DB7;
+    padding: 5px !important;
+    text-align: center;
+    font-size: 14px !important;
+}
+
+tr.header-row {
+    background: #0B6DB7;
+}
+
+.col-no {
+    width: 15%;
+}
+
+.col-year {
+    width: 15%;
+}
+
+.col-host {
+    width: 70%;
+}
