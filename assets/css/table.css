@@ -31,6 +31,14 @@ td {
 }
 
 /* 투표 결과 표 */
+.col-Candidate-90 {
+    width: 90%;
+}
+
+.col-Candidate-80 {
+    width: 80%;
+}
+
 .col-Candidate-70 {
     width: 70%;
 }
