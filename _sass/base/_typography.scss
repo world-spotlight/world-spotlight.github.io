@@ -20,10 +20,12 @@
         main & {
           @if $i == 2 {
             margin: 2.5rem 0 1.25rem;
-            border-bottom: 0.5px solid #383b40;
+            border-bottom: 0.5px solid #2c2d2d;
             padding-bottom: 10px;
           } @else {
             margin: 2rem 0 1rem;
+            border-bottom: 0.5px solid #2c2d2d;
+            padding-bottom: 10px;
           }
         }
       }
@@ -33,6 +35,8 @@
       }
     } @else {
       font-size: 1.05rem;
+      border-bottom: 0.5px solid #2c2d2d;
+      padding-bottom: 10px;
     }
   }
 }
