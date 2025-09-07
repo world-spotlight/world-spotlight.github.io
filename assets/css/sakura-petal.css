@@ -1,0 +1,28 @@
+  :root{
+    --z-index: 9999;
+  }
+
+  /* 벚꽃잎 기본 스타일 */
+  .sakura-petal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;           /* 클릭 이벤트 방해하지 않음 */
+    will-change: transform, opacity;/* GPU 가속 힌트 */
+    z-index: var(--z-index);
+    backface-visibility: hidden;    /* 3D 회전 시 뒷면 숨기기 */
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), inset 0 2px 8px rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,200,210,0.45);
+    mix-blend-mode: normal;
+    /* 색감(핑크 계열) */
+    background-image:
+      radial-gradient(circle at 35% 30%, rgba(255,180,200,0.98) 0 30%, rgba(255,210,225,0.75) 60%, transparent 100%),
+      linear-gradient(180deg, rgba(255,200,215,0.95), rgba(255,230,240,0.85));
+    opacity: 0.95;
+  }
+
+  /* 모션 줄이기 환경(시스템 설정) → 단순 표시 */
+  @media (prefers-reduced-motion: reduce) {
+    .sakura-petal { transition: none !important; opacity: 0.9; }
+  }
