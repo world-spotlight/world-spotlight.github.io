@@ -20,6 +20,8 @@
         main & {
           @if $i == 2 {
             margin: 2.5rem 0 1.25rem;
+            border-bottom: 0.5px solid #383b40;
+            padding-bottom: 10px;
           } @else {
             margin: 2rem 0 1rem;
           }
@@ -28,8 +30,6 @@
 
       & {
         font-size: 1rem + (5 - $i) * $size-factor;
-        border-bottom: 0.5px solid #383b40;
-        padding-bottom: 10px;
       }
     } @else {
       font-size: 1.05rem;
