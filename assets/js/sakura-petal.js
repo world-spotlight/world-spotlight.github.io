@@ -52,9 +52,9 @@
     const dy = Math.sin(angle) * distance;
 
     // 3D 회전 효과
-    const rotateZ = rnd(180, 720);   // 평면 회전
-    const rotateY = rnd(-540, 540);  // 좌우 뒤집힘 효과
-    const scale = rnd(0.6, 1.3);     // 크기 변화
+    const rotateZ = rnd(-540, 540);   // 평면 회전
+    const rotateY = rnd(-45, 45);  // 좌우 뒤집힘 효과
+    const scale = rnd(0.5, 1.0);     // 크기 변화
 
     const duration = rnd(CONFIG.minDuration, CONFIG.maxDuration);
 
