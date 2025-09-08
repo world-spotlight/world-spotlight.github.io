@@ -7,26 +7,6 @@
     font-weight: bold;
 }
 
-.korea-host1 {
-    background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    text-decoration: none;
-    position: relative;
-}
-
-.korea-host1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
-}
-
 .korea-host2 {
     background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
     -webkit-background-clip: text;
@@ -49,6 +29,11 @@
 }
 
 .foreign-host {
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
 }
 
@@ -68,6 +53,11 @@
 }
 
 .foreign-host2 {
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
     text-decoration: none;
     position: relative;
@@ -80,5 +70,5 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: #f0f6fc;
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
 }
