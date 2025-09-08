@@ -49,10 +49,20 @@
 }
 
 .foreign-host {
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
 }
 
 .foreign-host1 {
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     text-decoration: none;
     position: relative;
 }
@@ -64,10 +74,15 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: #f0f6fc;
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
 }
 
 .foreign-host2 {
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
     text-decoration: none;
     position: relative;
@@ -80,5 +95,5 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: #f0f6fc;
+    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
 }
