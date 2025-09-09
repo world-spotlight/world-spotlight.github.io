@@ -50,8 +50,12 @@
       .card-title {
         @extend %text-clip;
 
-        color: #00BFFF !important;
         font-size: 1.25rem;
+        background: linear-gradient(90deg, #00FFD7, #00FFC3, #00FFA5, #00FF8C);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
         font-weight: bold;
       }
 
