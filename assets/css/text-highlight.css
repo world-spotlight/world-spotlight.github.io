@@ -1,5 +1,5 @@
 .korea-host {
-    background: linear-gradient(90deg, #00E0FF, #00BFFF, #3399FF, #0066CC);
+    background: linear-gradient(90deg, #00D7FF, #00C3FF, #00A5FF, #008CFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -8,7 +8,7 @@
 }
 
 .korea-host2 {
-    background: linear-gradient(90deg, #00E0FF, #00BFFF, #3399FF, #0066CC);
+    background: linear-gradient(90deg, #00D7FF, #00C3FF, #00A5FF, #008CFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -25,7 +25,7 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, #00E0FF, #00BFFF, #3399FF, #0066CC);
+    background: linear-gradient(90deg, #00D7FF, #00C3FF, #00A5FF, #008CFF);
 }
 
 .foreign-host {
