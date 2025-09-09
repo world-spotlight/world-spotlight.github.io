@@ -29,7 +29,7 @@
 }
 
 .foreign-host {
-    background: linear-gradient(135deg, #ffd700, #ffc300, #ffa500, #ff8c00);
+    background: linear-gradient(135deg, #baf2b8, #88e88c, #50c75b, #2a8b3a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -53,7 +53,7 @@
 }
 
 .foreign-host2 {
-    background: linear-gradient(135deg, #ffd700, #ffc300, #ffa500, #ff8c00);
+    background: linear-gradient(135deg, #baf2b8, #88e88c, #50c75b, #2a8b3a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -70,5 +70,5 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(135deg, #ffd700, #ffc300, #ffa500, #ff8c00);
+    background: linear-gradient(135deg, #baf2b8, #88e88c, #50c75b, #2a8b3a);
 }
