@@ -1,5 +1,5 @@
 .korea-host {
-    background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
+    background: linear-gradient(135deg, #FF43A8, #BE5DFA, #776CFF, #4172F2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -8,7 +8,7 @@
 }
 
 .korea-host2 {
-    background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
+    background: linear-gradient(135deg, #FF43A8, #BE5DFA, #776CFF, #4172F2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -25,11 +25,11 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, #FF43A8, #BE5DFA, #776CFF, #4172F2);
+    background: linear-gradient(135deg, #FF43A8, #BE5DFA, #776CFF, #4172F2);
 }
 
 .foreign-host {
-    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    background: linear-gradient(135deg, #ffd700, #ffc300, #ffa500, #ff8c00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -53,7 +53,7 @@
 }
 
 .foreign-host2 {
-    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    background: linear-gradient(135deg, #ffd700, #ffc300, #ffa500, #ff8c00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -70,5 +70,5 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, #ffd700, #ffc300, #ffa500, #ff8c00);
+    background: linear-gradient(135deg, #ffd700, #ffc300, #ffa500, #ff8c00);
 }
