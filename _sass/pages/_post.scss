@@ -293,8 +293,8 @@ header {
     }
 
     .is-active-link {
-      color: var(--toc-highlight) !important;
-      font-weight: 600;
+      color: #D7FF00 !important;
+      font-weight: bold;
 
       &::before {
         display: inline-block;
