@@ -32,6 +32,12 @@
   .panel-heading {
     font-family: inherit;
     line-height: inherit;
+    background: linear-gradient(90deg, #D7FF00, #C3FF00, #A5FF00, #8CFF00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
 
     @include mx.label(inherit);
   }
