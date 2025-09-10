@@ -1,3 +1,4 @@
+/* 테이블 텍스트 강조 서식 */
 .korea-host {
     background: linear-gradient(90deg, #00D7FF, #00C3FF, #00A5FF, #008CFF);
     -webkit-background-clip: text;
@@ -72,3 +73,13 @@
     height: 1px;
     background: linear-gradient(90deg, #FFD700, #FFC300, #FFA500, #FF8C00);
 }
+
+/* 페이지 및 포스트 텍스트 강조 서식 */
+.post-title {
+    background: linear-gradient(90deg, #00FFD7, #00FFC3, #00FFA5, #00FF8C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+  }
