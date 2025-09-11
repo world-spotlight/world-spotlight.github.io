@@ -13,15 +13,6 @@ td {
     font-size: 14px !important;
 }
 
-td {
-    background: linear-gradient(90deg, #F0F0F0, #D9D9D9, #BFBFBF, #A6A6A6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
-}
-
 .header-row {
     background: #0B6DB7 !important;
 }
