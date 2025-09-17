@@ -1,4 +1,8 @@
 /* 테이블 텍스트 강조 서식 */
+.korea-host-bg {
+    background: #001F3F !important;
+}
+
 .korea-host {
     background: linear-gradient(90deg, #00D7FF, #00C3FF, #00A5FF, #008CFF);
     -webkit-background-clip: text;
