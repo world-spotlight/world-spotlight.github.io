@@ -4,11 +4,6 @@
     text-decoration: none;
 }
 
-.footnote-link::after {
-    content: attr(data-note);
-    white-space: pre-wrap; /* 줄바꿈과 공백 모두 유지 */
-}
-
 .footnote-overlay {
     position: fixed;
     top: 0;
