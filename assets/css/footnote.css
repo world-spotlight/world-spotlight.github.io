@@ -2,6 +2,7 @@
     color: #2f81f7;
     cursor: pointer;
     text-decoration: none;
+    white-space: pre;
 }
 
 .footnote-overlay {
