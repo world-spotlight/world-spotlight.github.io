@@ -112,3 +112,8 @@
     color: transparent;
     font-weight: bold;
 }
+
+/* 카테고리 포스트 개수 텍스트 강조 서식 */
+.font-color-\#f0f6fc {
+    color: #f0f6fc !important;
+}
