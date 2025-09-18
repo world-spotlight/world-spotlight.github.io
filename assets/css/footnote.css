@@ -2,7 +2,11 @@
     color: #2f81f7;
     cursor: pointer;
     text-decoration: none;
-    white-space: pre;
+}
+
+.footnote-link::after {
+    content: attr(data-note);
+    white-space: pre; /* \n을 줄바꿈으로 표시 */
 }
 
 .footnote-overlay {
