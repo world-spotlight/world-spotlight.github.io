@@ -89,7 +89,7 @@ search {
     }
 
     @include bp.xl {
-      width: 100%;
+      width: 90%;
 
       &:nth-child(odd) {
         margin-right: 0rem;
