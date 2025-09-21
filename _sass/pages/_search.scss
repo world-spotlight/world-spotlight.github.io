@@ -89,14 +89,14 @@ search {
     }
 
     @include bp.xl {
-      width: 45%;
+      width: 100%;
 
       &:nth-child(odd) {
-        margin-right: 1.5rem;
+        margin-right: 0rem;
       }
 
       &:nth-child(even) {
-        margin-left: 1.5rem;
+        margin-left: 0rem;
       }
 
       &:last-child:nth-child(odd) {
