@@ -106,7 +106,12 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
     width: fit-content;
-    color: var(--site-title-color);
+
+    background: linear-gradient(135deg, #FF43A8, #BE5DFA, #776CFF, #4172F2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
   }
 
   .site-subtitle {
