@@ -66,3 +66,12 @@ td {
 .col-Round-30 {
     width: 30%;
 }
+
+/* 수장 */
+.col-term {
+    width: 15%;
+}
+
+.col-head {
+    width: 70%;
+}
