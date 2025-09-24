@@ -68,10 +68,6 @@ td {
 }
 
 /* 수장 */
-.col-term {
-    width: 15%;
-}
-
-.col-head {
-    width: 70%;
+col-h&t {
+    width: 85%;
 }
