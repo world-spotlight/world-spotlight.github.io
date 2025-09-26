@@ -7,16 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (popupOpen) return;
     popupOpen = true;
 
-    // 오버레이 생성
     const overlay = document.createElement('div');
     overlay.className = 'footnote-overlay';
     overlay.addEventListener('click', closePopup);
     overlay.addEventListener('touchmove', disableScroll, { passive: false });
 
-    // 팝업 생성
     const popup = document.createElement('div');
     popup.className = 'footnote-popup';
-    // 줄바꿈 적용
     popup.innerHTML = text.replace(/\n/g, '<br>');
     popup.addEventListener('click', e => e.stopPropagation());
 
@@ -36,10 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const escHandler = e => { if (e.key === 'Escape') closePopup(); };
 
-  document.querySelectorAll('.footnote-link').forEach(link =>
+  // footnote-link 자동 번호 매기기
+  document.querySelectorAll('.footnote-link').forEach((link, index) => {
+    link.textContent = `[${index + 1}]`; // [1], [2], [3]...
     link.addEventListener('click', e => {
       e.preventDefault();
       openPopup(link.dataset.note || '');
-    })
-  );
+    });
+  });
 });
