@@ -2,8 +2,9 @@
     color: #2f81f7;
     cursor: pointer;
     text-decoration: none;
+    vertical-align: super;
+    font-size: smaller;
 }
-
 .footnote-overlay {
     position: fixed;
     top: 0;
@@ -16,14 +17,12 @@
     align-items: center;
     z-index: 9998;
 }
-
 .footnote-popup {
     background: #1b1b1e;
     color: #f0f6fc;
     padding: 14px 18px;
     border-radius: 10px;
     max-width: 80%;
-    min-width: auto;
     width: auto;
     word-wrap: break-word;
     z-index: 9999;
