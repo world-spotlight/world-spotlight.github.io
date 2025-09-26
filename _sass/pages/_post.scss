@@ -293,8 +293,12 @@ header {
     }
 
     .is-active-link {
-      color: #D7FF00 !important;
-      font-weight: bold;
+        background: linear-gradient(90deg, #D7FF00, #C3FF00, #A5FF00, #8CFF00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        font-weight: bold;
 
       &::before {
         display: inline-block;
