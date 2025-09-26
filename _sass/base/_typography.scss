@@ -20,22 +20,26 @@
         main & {
           @if $i == 2 {
             margin: 2.5rem 0 1.25rem;
-            border-bottom: .5px solid #2c2d2d;
+            border-bottom: 1px solid #2c2d2d;
             padding-bottom: 15px;
             border-top: 2px solid #2c2d2d;
             padding-top: 15px;
-            color: #00FFD7;
+            background: linear-gradient(90deg, #00FFD7, #00FFC3, #00FFA5, #00FF8C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
             font-weight: bold;
           } @else if $i == 3 {
             margin: 2rem 0 1rem;
-            border-bottom: .5px solid #2c2d2d;
+            border-bottom: 1px solid #2c2d2d;
             padding-bottom: 10px;
             border-left: 10px solid #2c2d2d;
             padding-left: 10px;
             padding-top: 10px;
           } @else {
             margin: 2rem 0 1rem;
-            border-bottom: 0.5px solid #2c2d2d;
+            border-bottom: 1px solid #2c2d2d;
             padding-bottom: 10px;
           }
         }
