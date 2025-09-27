@@ -170,8 +170,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-
-collections:
   meetings:
     output: true
     sort_by: order
