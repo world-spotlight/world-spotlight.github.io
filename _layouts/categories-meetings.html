@@ -1,6 +1,6 @@
 ---
 layout: page
-# All the Categories of posts
+# Categories for a specific collection: meetings
 ---
 
 {% include lang.html %}
@@ -10,17 +10,42 @@ layout: page
 
 {% assign group_index = 0 %}
 
-{% assign sort_categories = site.categories | sort %}
+{% comment %}
+  *** 1. 목표 컬렉션의 모든 글을 가져옵니다. (컬렉션 이름: meetings) ***
+{% endcomment %}
+{% assign target_posts = site.meetings %} 
 
-{% for category in sort_categories %}
-  {% assign category_name = category | first %}
-  {% assign meetings_of_category = category | last %}
-  {% assign first_post = meetings_of_category | first %}
+{% comment %} 
+  *** 2. target_posts를 기반으로 카테고리 목록을 생성합니다. ***
+  target_posts에 포함된 글의 카테고리 이름만 추려냅니다.
+{% endcomment %}
+{% assign distinct_categories = '' | split: '' %}
+{% for post in target_posts %}
+  {% for category_name in post.categories %}
+    {% unless distinct_categories contains category_name %}
+      {% assign distinct_categories = distinct_categories | push: category_name %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
 
-  {% if category_name == first_post.categories[0] %}
+{% assign sort_categories = distinct_categories | sort %}
+
+
+{% for category_name in sort_categories %}
+  
+  {% comment %} 
+    *** 3. 현재 카테고리 이름에 해당하는 target_posts 목록을 필터링합니다. ***
+  {% endcomment %}
+  {% assign all_posts_with_category = site.categories[category_name] %}
+  {% assign posts_of_category = all_posts_with_category | where_exp: "item", "target_posts contains item" %}
+  
+  {% assign first_post = posts_of_category | first %}
+
+  {% comment %} posts_of_category가 비어있지 않고, 첫 번째 카테고리일 때만 상위 카테고리로 표시 {% endcomment %}
+  {% if first_post and category_name == first_post.categories[0] %}
     {% assign sub_categories = '' | split: '' %}
 
-    {% for post in meetings_of_category %}
+    {% for post in posts_of_category %}
       {% assign second_category = post.categories[1] %}
       {% if second_category %}
         {% unless sub_categories contains second_category %}
@@ -33,7 +58,6 @@ layout: page
     {% assign sub_categories_size = sub_categories | size %}
 
     <div class="card categories">
-      <!-- top-category -->
       <div
         id="{{ HEAD_PREFIX }}{{ group_index }}"
         class="card-header d-flex justify-content-between hide-border-bottom"
@@ -44,12 +68,11 @@ layout: page
           {% capture _category_url %}/categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
           <a href="{{ _category_url | relative_url }}" class="mx-2">{{ category_name }}</a>
 
-          <!-- content count -->
-          {% assign top_meetings_size = site.categories[category_name] | size %}
+          {% assign top_posts_size = posts_of_category | size %}
           <span class="text-muted small font-weight-light font-color-#f0f6fc">
-            ({{ top_meetings_size }})
+            ({{ top_posts_size }})
 
-            {% if top_meetings_size > 1 %}
+            {% if top_posts_size > 1 %}
               {{
                 site.data.locales[lang].categories.post_measure.plural
                 | default: site.data.locales[lang].categories.post_measure
@@ -63,7 +86,6 @@ layout: page
           </span>
         </span>
 
-        <!-- arrow -->
         {% if sub_categories_size > 0 %}
           <a
             href="#{{ LIST_PREFIX }}{{ group_index }}"
@@ -80,9 +102,6 @@ layout: page
           </span>
         {% endif %}
       </div>
-      <!-- .card-header -->
-
-      <!-- Sub-categories -->
       {% if sub_categories_size > 0 %}
         <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
           <ul class="list-group">
@@ -93,11 +112,13 @@ layout: page
                 {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
                 <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
 
-                {% assign meetings_size = site.categories[sub_category] | size %}
+                {% comment %} 하위 카테고리 내 글 개수도 target_posts에 포함된 글만 계산합니다. {% endcomment %}
+                {% assign sub_posts_size = site.categories[sub_category] | where_exp: "item", "target_posts contains item" | size %}
+                
                 <span class="text-muted small font-weight-light font-color-#f0f6fc">
-                  ({{ meetings_size }})
+                  ({{ sub_posts_size }})
 
-                  {% if meetings_size > 1 %}
+                  {% if sub_posts_size > 1 %}
                     {{
                       site.data.locales[lang].categories.post_measure.plural
                       | default: site.data.locales[lang].categories.post_measure
@@ -115,8 +136,6 @@ layout: page
         </div>
       {% endif %}
     </div>
-    <!-- .card -->
-
     {% assign group_index = group_index | plus: 1 %}
   {% endif %}
 {% endfor %}
