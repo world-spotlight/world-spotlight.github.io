@@ -31,57 +31,16 @@
           <a href="{{ tab.url | relative_url }}" class="nav-link">
             <i class="fa-fw {{ tab.icon }}"></i>
             {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+
             <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
           </a>
         </li>
+        <!-- .nav-item -->
       {% endfor %}
     </ul>
-
-    <!-- 카테고리 그룹 3개 -->
-    <!-- 수장 그룹 -->
-    <div class="category-group mb-3">
-      <h6 class="category-title">수장</h6>
-      <ul class="nav flex-column">
-        {% for post in site.posts %}
-          {% if post.path contains 'heads/' %}
-            <li class="nav-item">
-              <a href="{{ post.url | relative_url }}" class="nav-link">{{ post.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-
-    <!-- 회의 그룹 -->
-    <div class="category-group mb-3">
-      <h6 class="category-title">회의</h6>
-      <ul class="nav flex-column">
-        {% for post in site.posts %}
-          {% if post.path contains 'meetings/' %}
-            <li class="nav-item">
-              <a href="{{ post.url | relative_url }}" class="nav-link">{{ post.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-
-    <!-- 대회 그룹 -->
-    <div class="category-group mb-3">
-      <h6 class="category-title">대회</h6>
-      <ul class="nav flex-column">
-        {% for post in site.posts %}
-          {% if post.path contains 'events/' %}
-            <li class="nav-item">
-              <a href="{{ post.url | relative_url }}" class="nav-link">{{ post.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
   </nav>
 
-  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
+  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
     {% unless site.theme_mode %}
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
         <i class="fas fa-adjust"></i>
