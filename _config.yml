@@ -168,9 +168,9 @@ kramdown:
 
 collections:
   tabs:
-  output: true
+    output: true
     sort_by: order
-    
+
 defaults:
   - scope:
       path: "" # An empty string here means all files in the project
