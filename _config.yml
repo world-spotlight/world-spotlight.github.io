@@ -168,8 +168,16 @@ kramdown:
 
 collections:
   tabs:
-    output: true
+  output: true
     sort_by: order
+  competitions:
+    output: true
+  exhibitions:
+    output: true
+  leaders:
+    output: true
+  meetings:
+    output: true
     
 defaults:
   - scope:
