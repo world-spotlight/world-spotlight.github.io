@@ -15,12 +15,11 @@ layout: page
 {% assign meetings_posts = site.posts | where_exp:"post","post.path contains '_posts/meetings/'" %}
 
 {%- comment -%}
-  meetings 폴더 글들로 카테고리 그룹 만들기
+  meetings 글들의 모든 카테고리 뽑기
 {%- endcomment -%}
-{% assign sort_categories = meetings_posts | map: "categories" | uniq | sort %}
+{% assign sort_categories = meetings_posts | map: "categories" | join: ',' | split: ',' | uniq | sort %}
 
-{% for category_array in sort_categories %}
-  {% assign category_name = category_array | first %}
+{% for category_name in sort_categories %}
   {% assign posts_of_category = meetings_posts | where_exp:"p","p.categories contains category_name" %}
   {% assign first_post = posts_of_category | first %}
 
