@@ -195,11 +195,6 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-  - scope:
-      path: "_posts/meetings"
-      type: "posts"
-    values:
-      categories: ["meetings"]
 
 sass:
   style: compressed
