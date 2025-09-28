@@ -1,6 +1,6 @@
 ---
 layout: page
-# All the Categories of posts (only from _posts/meetings)
+# All the Categories of posts (only from _meetings)
 ---
 
 {% include lang.html %}
@@ -10,9 +10,9 @@ layout: page
 {% assign group_index = 0 %}
 
 {%- comment -%}
-  meetings 폴더 글만 가져오기 (relative_path 사용)
+  _meetings 컬렉션 글만 가져오기
 {%- endcomment -%}
-{% assign meetings_posts = site.posts | where_exp:"post","post.relative_path contains '_posts/meetings/'" %}
+{% assign meetings_posts = site.meetings %}
 
 {%- comment -%}
   meetings 글들의 모든 카테고리 뽑기
@@ -87,7 +87,8 @@ layout: page
         <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
           <ul class="list-group">
             {% for sub_category in sub_categories %}
-              {% assign posts_size = meetings_posts | where_exp:"p","p.categories contains sub_category" | size %}
+              {% assign posts_of_sub_category = posts_of_category | where_exp:"p","p.categories contains sub_category" %}
+              {% assign posts_size = posts_of_sub_category | size %}
               <li class="list-group-item">
                 <i class="far fa-folder fa-fw"></i>
                 {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
