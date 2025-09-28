@@ -83,7 +83,7 @@ layout: page
       <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
         <ul class="list-group">
           {% for sub_category in sub_categories %}
-            {% assign posts_size = meetings_posts | where_exp:"p","p.categories contains sub_category" | size %}
+            {% assign posts_size = posts_of_category | where_exp:"p","p.categories contains sub_category" | size %}
             <li class="list-group-item">
               <i class="far fa-folder fa-fw"></i>
               {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
