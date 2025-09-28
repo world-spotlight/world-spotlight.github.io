@@ -172,12 +172,16 @@ collections:
     sort_by: order
   competitions:
     output: true
+    sort_by: order
   exhibitions:
     output: true
+    sort_by: order
   leaders:
     output: true
+    sort_by: order
   meetings:
     output: true
+    sort_by: order
     
 defaults:
   - scope:
