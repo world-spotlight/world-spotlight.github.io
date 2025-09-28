@@ -228,3 +228,5 @@ jekyll-archives:
 plugins:
   - jekyll-sitemap
 
+gems:
+  - jekyll-sitemap
