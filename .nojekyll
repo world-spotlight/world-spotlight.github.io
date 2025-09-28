@@ -1,1 +1,5 @@
-
+cd 프로젝트_루트_폴더
+touch .nojekyll
+git add .nojekyll
+git commit -m "Add .nojekyll to enable sitemap.xml"
+git push
