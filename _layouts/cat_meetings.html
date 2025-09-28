@@ -10,9 +10,9 @@ layout: page
 {% assign group_index = 0 %}
 
 {%- comment -%}
-  meetings 폴더 글만 가져오기
+  meetings 폴더 글만 가져오기 (relative_path 사용)
 {%- endcomment -%}
-{% assign meetings_posts = site.posts | where_exp:"post","post.path contains '_posts/meetings/'" %}
+{% assign meetings_posts = site.posts | where_exp:"post","post.relative_path contains '_posts/meetings/'" %}
 
 {%- comment -%}
   meetings 글들의 모든 카테고리 뽑기
